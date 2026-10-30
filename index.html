@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NA021 — Advanced Grammar Practice</title>
+<style>
+:root{--bg:#F4F8FC;--pr:#6C9FD6;--lt:#E6F1FB;--wh:#FFF;--tx:#243447;--su:#4CAF80;--er:#E57373;--bd:#D5E3F0;--rd:12px}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+body{background:var(--bg);color:var(--tx);min-height:100vh;font-size:15px;line-height:1.5}
+#app{display:flex;min-height:100vh}
+#sidebar{width:230px;background:var(--wh);padding:20px 14px;box-shadow:2px 0 10px rgba(108,159,214,.06);position:fixed;height:100vh;overflow-y:auto}
+#main{margin-left:230px;padding:24px;flex:1;max-width:1180px}
+#sidebar .brand{color:var(--pr);font-size:15px;font-weight:700;margin-bottom:18px;padding-left:8px}
+nav a{display:block;padding:10px 12px;margin:3px 0;border-radius:8px;color:var(--tx);text-decoration:none;font-size:14px;cursor:pointer;transition:background .15s}
+nav a:hover,nav a.active{background:var(--lt);color:var(--pr);font-weight:500}
+h1{font-size:23px;margin-bottom:6px;color:var(--tx)}
+h2{font-size:17px;margin:20px 0 12px;color:var(--tx)}
+h3{font-size:15px;margin-bottom:8px}
+.sub{color:#7A8BA1;font-size:13px;margin-bottom:18px}
+.card{background:var(--wh);border-radius:var(--rd);padding:20px;box-shadow:0 2px 10px rgba(108,159,214,.08);margin-bottom:16px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.stat{text-align:center;padding:14px 8px;background:var(--wh);border-radius:var(--rd);box-shadow:0 2px 8px rgba(108,159,214,.06)}
+.stat-v{font-size:26px;font-weight:700;color:var(--pr);line-height:1.2}
+.stat-l{font-size:12px;color:#7A8BA1;margin-top:4px}
+button{padding:10px 18px;background:var(--pr);color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;font-weight:500;transition:background .15s}
+button:hover{background:#5A8FC6}
+button.sec{background:var(--lt);color:var(--pr)}
+button.sec:hover{background:#D2E3F5}
+button.dan{background:var(--er)}
+button.dan:hover{background:#D65C5C}
+button.sm{padding:6px 12px;font-size:13px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.option{display:block;width:100%;text-align:left;padding:13px 16px;margin:8px 0;background:var(--wh);border:2px solid var(--bd);border-radius:10px;cursor:pointer;font-size:15px;color:var(--tx);transition:all .12s;font-weight:400}
+.option:hover{border-color:var(--pr);background:var(--lt)}
+.option.sel{border-color:var(--pr);background:var(--lt);font-weight:500}
+.option.cor{border-color:var(--su);background:#E8F5EE}
+.option.wr{border-color:var(--er);background:#FDEDED}
+.progress{height:8px;background:var(--lt);border-radius:4px;overflow:hidden;margin:10px 0}
+.pbar{height:100%;background:var(--pr);transition:width .3s}
+.ng{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:12px 0}
+.nb{padding:8px 4px;border:1px solid var(--bd);border-radius:6px;background:var(--wh);cursor:pointer;font-size:12px;text-align:center;color:var(--tx);font-weight:500}
+.nb.ans{background:var(--lt);border-color:var(--pr);color:var(--pr)}
+.nb.cur{background:var(--pr);color:#fff;border-color:var(--pr)}
+.nb.rc{background:#E8F5EE;border-color:var(--su);color:var(--su)}
+.nb.rw{background:#FDEDED;border-color:var(--er);color:var(--er)}
+.qt{font-size:16px;line-height:1.6;margin:14px 0;padding:16px;background:var(--lt);border-radius:10px}
+.exp{background:#FFF9E6;padding:13px;border-radius:8px;margin-top:12px;font-size:13px;line-height:1.55;border-left:3px solid #F5C542}
+.tc{cursor:pointer;transition:transform .12s,box-shadow .12s;display:flex;flex-direction:column;gap:8px}
+.tc:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(108,159,214,.15)}
+.bdg{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:600;margin-right:4px}
+.bdg-A2{background:#E8F5EE;color:#3D8B62}
+.bdg-B1{background:#FFF4D6;color:#B5860A}
+.bdg-B2{background:#FFE8E8;color:#C44}
+.fb{padding:6px 14px;background:var(--wh);border:1px solid var(--bd);border-radius:16px;font-size:13px;cursor:pointer;color:var(--tx);font-weight:400}
+.fb.act{background:var(--pr);color:#fff;border-color:var(--pr)}
+.fb:hover:not(.act){background:var(--lt)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.mt{margin-top:16px}
+.center{text-align:center}
+.timer{font-family:monospace;font-size:16px;font-weight:700;padding:6px 14px;background:var(--lt);color:var(--pr);border-radius:8px}
+.timer.warn{background:#FDEDED;color:var(--er)}
+.tiny{font-size:12px;color:#7A8BA1}
+.topic-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);gap:12px;flex-wrap:wrap}
+.topic-row:last-child{border-bottom:none}
+@media(max-width:768px){
+  #app{flex-direction:column}
+  #sidebar{position:static;width:100%;height:auto;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  #sidebar .brand{margin-bottom:10px}
+  #sidebar nav{display:flex;flex-wrap:wrap;gap:4px}
+  #sidebar nav a{padding:7px 11px;font-size:12.5px}
+  #main{margin-left:0;padding:14px}
+  h1{font-size:19px}
+  .ng{grid-template-columns:repeat(5,1fr)}
+  .stat-v{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand">📚 NA021 Grammar</div>
+    <nav id="nav"></nav>
+  </aside>
+  <main id="main"></main>
+</div>
+<script>
+/* =========================================================
+   TOPIC DEFINITIONS
+   ========================================================= */
+const TOPICS = [
+  {id:1, name:"Prepositions of Time", ov:"Use at + clock time / at night / at the weekend; on + days, dates, specific occasions; in + months, years, seasons, parts of the day. No preposition with next, last, this, every."},
+  {id:2, name:"Prepositions of Place", ov:"Use in for enclosed spaces, on for surfaces, at for points. Above/over, below/under, between/among, in front of/behind, across/through/along."},
+  {id:3, name:"Phrasal Verbs", ov:"Phrasal verbs = verb + particle. Separable verbs allow pronoun objects between verb and particle (turn it up); inseparable verbs keep the particle attached (look after her)."},
+  {id:4, name:"Gerunds & Infinitives", ov:"Gerund (-ing) after verbs like enjoy, avoid, admit, mind; to-infinitive after decide, hope, refuse; some verbs change meaning (stop doing vs stop to do)."},
+  {id:5, name:"Past Participles", ov:"V3 forms in perfect tenses (have + V3), passive voice (be + V3), as adjectives (a broken window), and in participle clauses (Surprised by the news, she...)."},
+  {id:6, name:"Relative Clauses", ov:"Defining clauses use who/which/that; non-defining use commas and never 'that'. Whose = possession. Where = place. When = time. Why = reason."},
+  {id:7, name:"Reduced Relative Clauses", ov:"Drop the relative pronoun + be: active → V-ing (the man standing there); passive → V3 (the book written by Orwell). Object relative clauses cannot be reduced this way."},
+  {id:8, name:"Prepositions + Relative Clauses", ov:"Formal: preposition + which/whom (the house in which I grew up). Informal: preposition at end (the house I grew up in). 'That' cannot follow a preposition."},
+  {id:9, name:"Reported Speech", ov:"Backshift tenses when the reporting verb is past: 'I am tired' → she was tired. Adjust pronouns, time (tomorrow → the following day), place (here → there). No backshift for universal truths."},
+  {id:10, name:"Conjunctions", ov:"Coordinating: and, but, or, nor, for, yet, so. Subordinating: because, although, unless, while. Correlative: both...and, either...or, neither...nor, not only...but also."},
+  {id:11, name:"Purpose Clauses", ov:"to / in order to / so as to + V (same subject); so that / in order that + clause (different subjects); in order not to / so as not to (negative); for fear of / in case."},
+  {id:12, name:"Result Clauses", ov:"so + adj/adv + that; such + (a/an) + adj + noun + that; so many/much/few/little + noun + that; too + adj + to V; adj + enough + to V."}
+];
+
+/* =========================================================
+   QUESTION BANK  (10 per topic = 120 questions, fully vetted)
+   Format: {t:topicId, s:section, q:question, o:[A,B,C,D], a:correctIndex, e:explanation}
+   ========================================================= */
+const QS = [
+  /* ---------- TOPIC 1: Prepositions of Time ---------- */
+  {t:1,s:"At / On / In",q:"The lecture begins ___ 8:45 tomorrow morning.",o:["in","on","at","by"],a:2,e:"Use 'at' with exact clock times: at 8:45."},
+  {t:1,s:"At / On / In",q:"My parents usually visit my grandparents ___ Sundays.",o:["at","on","in","for"],a:1,e:"Use 'on' with days of the week: on Sundays."},
+  {t:1,s:"At / On / In",q:"The company was established ___ 1998.",o:["on","at","in","by"],a:2,e:"Use 'in' with years: in 1998."},
+  {t:1,s:"At / On / In",q:"Many flowers begin to bloom ___ spring.",o:["at","on","in","during"],a:2,e:"Use 'in' with seasons: in spring."},
+  {t:1,s:"At / On / In",q:"We usually exchange presents ___ Christmas Day.",o:["at","in","on","by"],a:2,e:"Use 'on' with specific days/occasions: on Christmas Day."},
+  {t:1,s:"At / On / In",q:"The streets are often quiet ___ midnight.",o:["in","on","at","during"],a:2,e:"Use 'at' with precise points in time: at midnight."},
+  {t:1,s:"At / On / In",q:"My brother prefers studying ___ the evening.",o:["on","at","in","by"],a:2,e:"Use 'in' with parts of the day: in the evening (but 'at night')."},
+  {t:1,s:"At / On / In",q:"The final examination will take place ___ 15 December.",o:["in","at","on","for"],a:2,e:"Use 'on' with exact dates: on 15 December."},
+  {t:1,s:"At / On / In",q:"I usually feel more energetic ___ the morning.",o:["at","in","on","by"],a:1,e:"Use 'in' with parts of the day: in the morning."},
+  {t:1,s:"No preposition",q:"We are planning to move into our new apartment ___ next month.",o:["in","on","at","— (no preposition)"],a:3,e:"No preposition before next/last/this/every + time noun."},
+
+  /* ---------- TOPIC 2: Prepositions of Place ---------- */
+  {t:2,s:"In / On / At",q:"There are several interesting paintings ___ the walls of the gallery.",o:["in","on","at","under"],a:1,e:"Use 'on' with surfaces: on the walls."},
+  {t:2,s:"In / On / At",q:"My younger sister is waiting for me ___ the main entrance of the college.",o:["in","on","at","over"],a:2,e:"Use 'at' with points/entrances: at the main entrance."},
+  {t:2,s:"In / On / At",q:"The children are playing ___ the garden behind their house.",o:["at","in","on","above"],a:1,e:"Use 'in' for enclosed areas: in the garden."},
+  {t:2,s:"In / On / At",q:"We found an old photograph ___ the bottom of the drawer.",o:["in","on","at","over"],a:0,e:"Use 'in' for contained spaces: in the bottom of the drawer."},
+  {t:2,s:"In / On / At",q:"There is a small village ___ the coast of southern England.",o:["at","in","on","under"],a:2,e:"Use 'on' with coastlines: on the coast."},
+  {t:2,s:"In / On / At",q:"The students are sitting ___ the classroom, waiting for their teacher.",o:["at","in","on","over"],a:1,e:"Use 'in' for enclosed spaces: in the classroom."},
+  {t:2,s:"In / On / At",q:"My grandparents live ___ a quiet street near the river.",o:["in","at","on","above"],a:2,e:"Use 'on' with streets: on a quiet street."},
+  {t:2,s:"In / On / At",q:"Someone has left a cup of coffee ___ my desk.",o:["at","in","on","between"],a:2,e:"Use 'on' with surfaces: on my desk."},
+  {t:2,s:"In / On / At",q:"The receptionist is standing ___ the front desk.",o:["at","on","in","below"],a:0,e:"Use 'at' with points of activity: at the front desk."},
+  {t:2,s:"In / On / At",q:"There are many beautiful islands ___ the Pacific Ocean.",o:["on","at","in","over"],a:2,e:"Use 'in' with bodies of water (as regions): in the Pacific Ocean."},
+
+  /* ---------- TOPIC 3: Phrasal Verbs ---------- */
+  {t:3,s:"Meaning",q:"I need to ___ what time the last train leaves before buying my ticket.",o:["find out","give up","take after","put off"],a:0,e:"Find out = discover information."},
+  {t:3,s:"Meaning",q:"The meeting was ___ because several members of the committee were absent.",o:["brought up","called off","taken over","looked after"],a:1,e:"Call off = cancel."},
+  {t:3,s:"Meaning",q:"My younger brother takes ___ our father; they have very similar personalities.",o:["up","after","over","off"],a:1,e:"Take after = resemble (a parent/relative)."},
+  {t:3,s:"Meaning",q:"The police are trying to ___ the cause of the accident.",o:["look into","look after","look up to","look forward to"],a:0,e:"Look into = investigate."},
+  {t:3,s:"Meaning",q:"We have ___ sugar, so could you buy some at the supermarket?",o:["run into","run out of","run over","run away"],a:1,e:"Run out of = have no more of something."},
+  {t:3,s:"Meaning",q:"Despite several difficulties, the researchers refused to ___.",o:["give in","give away","give off","give back"],a:0,e:"Give in = surrender, stop resisting."},
+  {t:3,s:"Meaning",q:"I ___ an old friend while I was shopping at the market yesterday.",o:["came across","came up with","came down with","came along"],a:0,e:"Come across = meet/find by chance."},
+  {t:3,s:"Meaning",q:"The company decided to ___ a new policy to improve working conditions.",o:["bring about","bring up","bring in","bring out"],a:2,e:"Bring in = introduce (a new policy/law)."},
+  {t:3,s:"Meaning",q:"The students need to ___ their assignments before the deadline.",o:["hand in","hand out","hand over","hand back"],a:0,e:"Hand in = submit."},
+  {t:3,s:"Meaning",q:"You should ___ your English vocabulary regularly if you want to make progress.",o:["look after","build up","turn down","break into"],a:1,e:"Build up = gradually increase/develop."},
+
+  /* ---------- TOPIC 4: Gerunds & Infinitives ---------- */
+  {t:4,s:"Verb + gerund",q:"My brother enjoys ___ documentaries about wildlife.",o:["watch","watching","to watch","watched"],a:1,e:"Enjoy + gerund (V-ing)."},
+  {t:4,s:"Verb + gerund",q:"The students avoided ___ unnecessary mistakes in their assignments.",o:["make","to make","making","made"],a:2,e:"Avoid + gerund."},
+  {t:4,s:"Verb + gerund",q:"She admitted ___ the confidential document without permission.",o:["copying","to copy","copy","copied"],a:0,e:"Admit + gerund."},
+  {t:4,s:"Verb + gerund",q:"Would you mind ___ the window? It is rather cold outside.",o:["close","to close","closing","closed"],a:2,e:"Would you mind + gerund."},
+  {t:4,s:"Verb + gerund",q:"The manager postponed ___ the final decision until next Monday.",o:["announce","announcing","to announce","announced"],a:1,e:"Postpone + gerund."},
+  {t:4,s:"Verb + gerund",q:"I strongly recommend ___ this book before taking the examination.",o:["read","to read","reading","reads"],a:2,e:"Recommend + gerund."},
+  {t:4,s:"Verb + gerund",q:"He denied ___ any money from the company.",o:["stealing","to steal","steal","stolen"],a:0,e:"Deny + gerund."},
+  {t:4,s:"Verb + gerund",q:"The children have finished ___ their homework.",o:["do","to do","doing","did"],a:2,e:"Finish + gerund."},
+  {t:4,s:"Verb + gerund",q:"She cannot imagine ___ in a foreign country without learning the local language.",o:["live","living","to live","lived"],a:1,e:"Imagine + gerund."},
+  {t:4,s:"Verb + gerund",q:"The students practise ___ English every day to improve their pronunciation.",o:["speak","to speak","speaking","spoke"],a:2,e:"Practise + gerund."},
+
+  /* ---------- TOPIC 5: Past Participles ---------- */
+  {t:5,s:"V3 forms",q:"The past participle of 'choose' is ___.",o:["chose","chosen","choosing","choosed"],a:1,e:"Choose – chose – chosen."},
+  {t:5,s:"V3 forms",q:"The past participle of 'write' is ___.",o:["wrote","writing","written","writed"],a:2,e:"Write – wrote – written."},
+  {t:5,s:"V3 forms",q:"The past participle of 'break' is ___.",o:["broke","breaking","broken","breaked"],a:2,e:"Break – broke – broken."},
+  {t:5,s:"V3 forms",q:"The past participle of 'speak' is ___.",o:["spoke","spoken","speaking","speaked"],a:1,e:"Speak – spoke – spoken."},
+  {t:5,s:"V3 forms",q:"The past participle of 'steal' is ___.",o:["stole","stealing","stolen","stealed"],a:2,e:"Steal – stole – stolen."},
+  {t:5,s:"V3 forms",q:"The past participle of 'freeze' is ___.",o:["froze","frozen","freezing","freezed"],a:1,e:"Freeze – froze – frozen."},
+  {t:5,s:"V3 forms",q:"The past participle of 'grow' is ___.",o:["grew","growing","grown","growed"],a:2,e:"Grow – grew – grown."},
+  {t:5,s:"V3 forms",q:"The past participle of 'shake' is ___.",o:["shook","shaking","shaken","shaked"],a:2,e:"Shake – shook – shaken."},
+  {t:5,s:"V3 forms",q:"The past participle of 'forget' is ___.",o:["forgot","forgotten","forgetting","forgetted"],a:1,e:"Forget – forgot – forgotten."},
+  {t:5,s:"V3 forms",q:"The past participle of 'ride' is ___.",o:["rode","riding","ridden","rided"],a:2,e:"Ride – rode – ridden."},
+
+  /* ---------- TOPIC 6: Relative Clauses ---------- */
+  {t:6,s:"Who / Which / That / Whom",q:"The woman ___ lives next door is a professional photographer.",o:["which","who","whose","whom"],a:1,e:"'Who' refers to a person as subject."},
+  {t:6,s:"Who / Which / That / Whom",q:"The documentary ___ we watched last night was extremely informative.",o:["who","whose","which","whom"],a:2,e:"'Which' refers to a thing as object."},
+  {t:6,s:"Who / Which / That / Whom",q:"The people ___ attended the conference came from several different countries.",o:["which","whom","whose","who"],a:3,e:"'Who' = subject relative pronoun for people."},
+  {t:6,s:"Who / Which / That / Whom",q:"The laptop ___ I ordered online arrived yesterday.",o:["that","who","whose","whom"],a:0,e:"'That' can refer to a thing in a defining clause."},
+  {t:6,s:"Who / Which / That / Whom",q:"The actor ___ played the main character received several awards.",o:["which","whose","who","whom"],a:2,e:"'Who' = subject for a person."},
+  {t:6,s:"Who / Which / That / Whom",q:"The restaurant ___ serves traditional Vietnamese food is always crowded.",o:["who","which","whom","whose"],a:1,e:"'Which' = subject for a thing."},
+  {t:6,s:"Who / Which / That / Whom",q:"The employee ___ the director praised has recently been promoted.",o:["whom","whose","which","where"],a:0,e:"'Whom' = object relative pronoun for a person."},
+  {t:6,s:"Who / Which / That / Whom",q:"The painting ___ hangs above the fireplace was created by a local artist.",o:["whom","who","whose","which"],a:3,e:"'Which' refers to a thing."},
+  {t:6,s:"Who / Which / That / Whom",q:"The scientist ___ discovered the new species has published a detailed report.",o:["whom","who","which","whose"],a:1,e:"'Who' = subject for a person."},
+  {t:6,s:"Who / Which / That / Whom",q:"The book ___ you recommended has become one of my favourites.",o:["who","whose","that","whom"],a:2,e:"'That' = object relative pronoun for a thing (defining clause)."},
+
+  /* ---------- TOPIC 7: Reduced Relative Clauses ---------- */
+  {t:7,s:"-ing reduction (active)",q:"The woman ___ near the entrance is our new English teacher.",o:["stand","standing","stood","is standing"],a:1,e:"Active clause (who is standing) → reduced to V-ing: standing."},
+  {t:7,s:"-ing reduction (active)",q:"Students ___ for the final examination should review all twelve grammar topics.",o:["preparing","prepared","prepare","are prepared"],a:0,e:"'Who are preparing' → preparing."},
+  {t:7,s:"-ing reduction (active)",q:"The man ___ the red car is my uncle.",o:["driven","drives","driving","is driven"],a:2,e:"'Who is driving' → driving."},
+  {t:7,s:"-ing reduction (active)",q:"People ___ in rural areas often have strong connections with their neighbours.",o:["lived","living","are lived","to live"],a:1,e:"'Who live' → living."},
+  {t:7,s:"-ing reduction (active)",q:"The children ___ in the garden belong to my sister.",o:["played","playing","play","are played"],a:1,e:"'Who are playing' → playing."},
+  {t:7,s:"-ing reduction (active)",q:"The company is looking for employees ___ foreign languages.",o:["spoken","speak","speaking","are speaking"],a:2,e:"'Who speak' → speaking."},
+  {t:7,s:"-ing reduction (active)",q:"The woman ___ a blue handbag is waiting for the bus.",o:["carrying","carried","is carried","carry"],a:0,e:"'Who is carrying' → carrying."},
+  {t:7,s:"-ing reduction (active)",q:"The students ___ in the library must keep their voices down.",o:["studied","study","studying","are studied"],a:2,e:"'Who are studying' → studying."},
+  {t:7,s:"-ing reduction (active)",q:"The road ___ to the airport is currently under construction.",o:["leading","led","leads","is led"],a:0,e:"'Which leads' → leading."},
+  {t:7,s:"-ing reduction (active)",q:"Anyone ___ to join the competition should register before Friday.",o:["wanted","wanting","wants","is wanted"],a:1,e:"'Who wants' → wanting."},
+
+  /* ---------- TOPIC 8: Prepositions + Relative Clauses ---------- */
+  {t:8,s:"Preposition + which",q:"This is the house ___ I grew up.",o:["in which","in who","in whom","in that"],a:0,e:"'In which' refers to a place (formal). Never 'in that'."},
+  {t:8,s:"Preposition + which",q:"The company ___ my father works is expanding rapidly.",o:["at whom","for which","for whom","at who"],a:1,e:"'Work for a company' → for which."},
+  {t:8,s:"Preposition + which",q:"The chair ___ I was sitting was uncomfortable.",o:["on whom","on which","at who","at whom"],a:1,e:"'Sit on a chair' → on which."},
+  {t:8,s:"Preposition + which",q:"The reason ___ he left the company remains unclear.",o:["for which","for whom","to which","to whom"],a:0,e:"'The reason for' → for which."},
+  {t:8,s:"Preposition + which",q:"The topic ___ we were talking was extremely interesting.",o:["about whom","about which","with whom","with which"],a:1,e:"'Talk about a topic' → about which."},
+  {t:8,s:"Preposition + which",q:"The tool ___ the workers repaired the machine was specially designed.",o:["by whom","with whom","with which","by which"],a:2,e:"'With a tool' → with which."},
+  {t:8,s:"Preposition + which",q:"The hotel ___ we stayed during our holiday was near the beach.",o:["at which","at whom","in whom","to whom"],a:0,e:"'Stay at a hotel' → at which."},
+  {t:8,s:"Preposition + which",q:"The subject ___ she is particularly interested is environmental protection.",o:["in whom","in which","on whom","on which"],a:1,e:"'Interested in a subject' → in which."},
+  {t:8,s:"Preposition + which",q:"The documents ___ the decision was based were incomplete.",o:["on which","on whom","at whom","for whom"],a:0,e:"'Base a decision on documents' → on which."},
+  {t:8,s:"Preposition + which",q:"The country ___ he was born has changed considerably.",o:["in whom","at which","in which","to whom"],a:2,e:"'Born in a country' → in which."},
+
+  /* ---------- TOPIC 9: Reported Speech ---------- */
+  {t:9,s:"Backshift",q:"Mary said, \"I am very tired.\" → Mary said that she ___ very tired.",o:["is","was","has been","will be"],a:1,e:"Present simple → past simple in reported speech."},
+  {t:9,s:"Backshift",q:"Tom said, \"I work in a bank.\" → Tom said that he ___ in a bank.",o:["works","worked","has worked","is working"],a:1,e:"Present simple → past simple."},
+  {t:9,s:"Backshift",q:"She said, \"I have finished my homework.\" → She said that she ___ her homework.",o:["has finished","finished","had finished","was finishing"],a:2,e:"Present perfect → past perfect."},
+  {t:9,s:"Backshift",q:"They said, \"We are watching a film.\" → They said that they ___ a film.",o:["watched","had watched","were watching","have watched"],a:2,e:"Present continuous → past continuous."},
+  {t:9,s:"Backshift",q:"Peter said, \"I bought a new laptop yesterday.\" → Peter said that he ___ a new laptop the day before.",o:["buys","bought","had bought","has bought"],a:2,e:"Past simple → past perfect; 'yesterday' → 'the day before'."},
+  {t:9,s:"Backshift",q:"Anna said, \"I will call you tomorrow.\" → Anna said that she ___ me the following day.",o:["will call","would call","called","had called"],a:1,e:"Will → would; 'tomorrow' → 'the following day'."},
+  {t:9,s:"Modals",q:"He said, \"I can speak three languages.\" → He said that he ___ speak three languages.",o:["can","could","will","may"],a:1,e:"Can → could."},
+  {t:9,s:"Modals",q:"She said, \"I may be late.\" → She said that she ___ be late.",o:["may","can","might","must"],a:2,e:"May → might."},
+  {t:9,s:"Backshift",q:"John said, \"I have been studying English for five years.\" → John said that he ___ English for five years.",o:["has been studying","had been studying","studied","was studying"],a:1,e:"Present perfect continuous → past perfect continuous."},
+  {t:9,s:"No backshift",q:"The teacher said, \"The Earth revolves around the Sun.\" → The teacher said that the Earth ___ around the Sun.",o:["revolved","revolves","had revolved","was revolving"],a:1,e:"Universal truths do not require backshift."},
+
+  /* ---------- TOPIC 10: Conjunctions ---------- */
+  {t:10,s:"Coordinating",q:"I wanted to go swimming, ___ the weather was too cold.",o:["and","but","so","or"],a:1,e:"'But' shows contrast."},
+  {t:10,s:"Coordinating",q:"You can have tea ___ coffee with your breakfast.",o:["but","nor","or","yet"],a:2,e:"'Or' presents alternatives."},
+  {t:10,s:"Coordinating",q:"She speaks English ___ French fluently.",o:["and","but","yet","so"],a:0,e:"'And' joins two similar items."},
+  {t:10,s:"Coordinating",q:"He was tired, ___ he continued working until midnight.",o:["so","or","yet","for"],a:2,e:"'Yet' = nevertheless, contrast."},
+  {t:10,s:"Coordinating",q:"Hurry up, ___ you will miss the bus.",o:["and","but","or","nor"],a:2,e:"'Or' = otherwise (consequence)."},
+  {t:10,s:"Coordinating",q:"I didn't call him, ___ did I send him a message.",o:["or","nor","but","so"],a:1,e:"'Nor' with inversion after a negative."},
+  {t:10,s:"Coordinating",q:"The restaurant was expensive, ___ the food was excellent.",o:["yet","so","for","or"],a:0,e:"'Yet' shows surprising contrast."},
+  {t:10,s:"Coordinating",q:"She studied very hard, ___ she passed the examination with excellent marks.",o:["but","so","nor","yet"],a:1,e:"'So' shows result."},
+  {t:10,s:"Coordinating",q:"He must be at home, ___ his car is parked outside.",o:["but","or","for","yet"],a:2,e:"'For' = because (formal, coordinating)."},
+  {t:10,s:"Coordinating",q:"The task was difficult, ___ everyone managed to complete it.",o:["but","so","or","for"],a:0,e:"'But' shows contrast."},
+
+  /* ---------- TOPIC 11: Purpose Clauses ---------- */
+  {t:11,s:"To + infinitive",q:"I went to the supermarket ___ some vegetables.",o:["buying","to buy","bought","for buy"],a:1,e:"to + infinitive for purpose."},
+  {t:11,s:"To + infinitive",q:"She studies English ___ become a teacher.",o:["so","for","to","because"],a:2,e:"to + infinitive expresses purpose."},
+  {t:11,s:"To + infinitive",q:"He went to the library ___ a book about history.",o:["borrow","borrowing","to borrow","for borrowing"],a:2,e:"Purpose: to borrow."},
+  {t:11,s:"To + infinitive",q:"We left home early ___ catch the first bus.",o:["to","for","so that","because"],a:0,e:"to + V = purpose."},
+  {t:11,s:"To + infinitive",q:"My brother is learning French ___ communicate with his colleagues.",o:["for","to","so","because"],a:1,e:"to + V (communicate) after a main verb."},
+  {t:11,s:"To + infinitive",q:"She opened the window ___ some fresh air.",o:["get","getting","to get","for get"],a:2,e:"to get = purpose."},
+  {t:11,s:"To + infinitive",q:"They travelled to Japan ___ traditional Japanese culture.",o:["experience","experiencing","to experience","for experience"],a:2,e:"to experience = purpose."},
+  {t:11,s:"To + infinitive",q:"I called my friend ___ her about the meeting.",o:["telling","to tell","tell","for tell"],a:1,e:"to tell = purpose."},
+  {t:11,s:"To + infinitive",q:"He exercises every morning ___ healthy.",o:["staying","stay","to stay","for stay"],a:2,e:"to stay healthy = purpose."},
+  {t:11,s:"To + infinitive",q:"The students went to the computer room ___ their assignments.",o:["complete","completing","to complete","for complete"],a:2,e:"to complete = purpose."},
+
+  /* ---------- TOPIC 12: Result Clauses ---------- */
+  {t:12,s:"So + adj + that",q:"The weather was ___ that we decided to stay at home.",o:["so bad","such bad","too bad","enough bad"],a:0,e:"so + adjective + that = result clause."},
+  {t:12,s:"Such + noun + that",q:"She is ___ talented singer that everyone admires her.",o:["so","such","such a","too"],a:2,e:"such a + adj + singular noun + that."},
+  {t:12,s:"So + adj + that",q:"The exam was ___ difficult that most students couldn't finish it.",o:["such","enough","so","too"],a:2,e:"so + adjective + that."},
+  {t:12,s:"Such + noun + that",q:"It was ___ interesting book that I read it twice.",o:["so","such an","such","too"],a:1,e:"such an + adj + singular noun + that."},
+  {t:12,s:"So many + noun + that",q:"There were ___ people at the concert that we couldn't find any seats.",o:["so much","so many","such much","too much"],a:1,e:"so many + plural countable noun + that."},
+  {t:12,s:"Too + adj + to V",q:"The box is ___ heavy for me to lift.",o:["enough","too","so","such"],a:1,e:"too + adj + (for someone) + to V."},
+  {t:12,s:"Adj + enough",q:"She is old ___ to travel alone.",o:["too","enough","so","such"],a:1,e:"adj + enough + to V."},
+  {t:12,s:"Enough + noun",q:"I don't have ___ money to buy a new laptop.",o:["enough","too","so","such"],a:0,e:"enough + noun + to V."},
+  {t:12,s:"So many + noun + that",q:"He made ___ mistakes that his teacher asked him to do the exercise again.",o:["so much","so little","so many","such much"],a:2,e:"so many + plural countable noun + that."},
+  {t:12,s:"Too + adj + to V",q:"The coffee is ___ hot to drink right now.",o:["too","enough","such","so"],a:0,e:"too + adj + to V."}
+];
+
+/* Give each question a stable id + default difficulty */
+QS.forEach((q, i) => { q.id = 'Q' + (i + 1); q.idx = i; q.d = q.d || 'B1'; });
+
+/* =========================================================
+   STORAGE
+   ========================================================= */
+const SK = 'na021_data_v1';
+const DEF = { sessions: [], tests: [], mistakes: [], topicStats: {}, lastTestIds: [] };
+let data = (function () {
+  try { return Object.assign({}, DEF, JSON.parse(localStorage.getItem(SK) || '{}')); }
+  catch (e) { return Object.assign({}, DEF); }
+})();
+function save() { localStorage.setItem(SK, JSON.stringify(data)); }
+
+function ensureTopicStats() {
+  TOPICS.forEach(t => {
+    if (!data.topicStats[t.id]) data.topicStats[t.id] = { attempted: 0, correct: 0, incorrect: 0 };
+  });
+}
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* Returns questions with shuffled option order and remapped answer index */
+function prepare(qs) {
+  return shuffle(qs).map(q => {
+    const indexed = q.o.map((text, i) => ({ text, i }));
+    const shuf = shuffle(indexed);
+    const newAnswer = shuf.findIndex(x => x.i === q.a);
+    return Object.assign({}, q, {
+      o: shuf.map(x => x.text),
+      a: newAnswer
+    });
+  });
+}
+
+/* Validate a prepared array */
+function validatePrepared(qs) {
+  qs.forEach(q => {
+    if (!Array.isArray(q.o) || q.o.length !== 4) throw new Error('Bad options: ' + q.id);
+    if (typeof q.a !== 'number' || q.a < 0 || q.a > 3) throw new Error('Bad answer: ' + q.id);
+  });
+}
+
+/* =========================================================
+   SESSION STATE
+   ========================================================= */
+let S = null;         // current session
+let timerId = null;   // interval id for comprehensive timer
+let currentPage = 'dashboard';
+let pageParams = {};
+
+/* =========================================================
+   ROUTER
+   ========================================================= */
+function navigate(page, params) {
+  if (timerId) { clearInterval(timerId); timerId = null; }
+  currentPage = page;
+  pageParams = params || {};
+  window.scrollTo(0, 0);
+  render();
+}
+
+function render() {
+  renderNav();
+  const main = document.getElementById('main');
+  try {
+    switch (currentPage) {
+      case 'dashboard': main.innerHTML = pageDashboard(); break;
+      case 'topics': main.innerHTML = pageTopics(); break;
+      case 'practice': main.innerHTML = pagePractice(); break;
+      case 'results': main.innerHTML = pageResults(); break;
+      case 'review': main.innerHTML = pageReview(); break;
+      case 'stats': main.innerHTML = pageStats(); break;
+      case 'settings': main.innerHTML = pageSettings(); break;
+      default: main.innerHTML = '<p>Page not found</p>';
+    }
+  } catch (e) {
+    main.innerHTML = '<div class="card"><h2>Error</h2><p>' + e.message + '</p><button onclick="app.home()">Home</button></div>';
+  }
+}
+
+function renderNav() {
+  const items = [
+    ['dashboard', '🏠 Dashboard'],
+    ['topics', '📖 Grammar Topics'],
+    ['stats', '📊 Statistics'],
+    ['settings', '⚙️ Settings']
+  ];
+  const nav = document.getElementById('nav');
+  nav.innerHTML = items.map(([p, label]) =>
+    `<a href="javascript:void(0)" onclick="app.go('${p}')" class="${currentPage === p ? 'active' : ''}">${label}</a>`
+  ).join('');
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+function pageDashboard() {
+  ensureTopicStats();
+  const tests = data.tests;
+  const totalQ = QS.length;
+  const sessions = data.sessions.length;
+  const testsDone = tests.length;
+  const avg = testsDone ? (tests.reduce((a, t) => a + t.score, 0) / testsDone) : 0;
+  const best = testsDone ? Math.max.apply(null, tests.map(t => t.score)) : 0;
+  const totalCorrect = Object.values(data.topicStats).reduce((a, s) => a + s.correct, 0);
+  const totalAttempted = Object.values(data.topicStats).reduce((a, s) => a + s.attempted, 0);
+  const overallAcc = totalAttempted ? Math.round(100 * totalCorrect / totalAttempted) : 0;
+
+  return `
+    <h1>Welcome to NA021 Practice</h1>
+    <p class="sub">Advanced Grammar — B1–B2 exam preparation</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="stat-v">${totalQ}</div><div class="stat-l">Questions in bank</div></div>
+      <div class="stat"><div class="stat-v">${sessions}</div><div class="stat-l">Practice sessions</div></div>
+      <div class="stat"><div class="stat-v">${testsDone}</div><div class="stat-l">Tests completed</div></div>
+      <div class="stat"><div class="stat-v">${avg.toFixed(1)}</div><div class="stat-l">Average test score</div></div>
+      <div class="stat"><div class="stat-v">${best.toFixed(1)}</div><div class="stat-l">Highest score</div></div>
+      <div class="stat"><div class="stat-v">${overallAcc}%</div><div class="stat-l">Overall accuracy</div></div>
+      <div class="stat"><div class="stat-v">${totalCorrect}</div><div class="stat-l">Correct answers</div></div>
+      <div class="stat"><div class="stat-v">${totalAttempted - totalCorrect}</div><div class="stat-l">Incorrect answers</div></div>
+    </div>
+
+    <div class="card mt">
+      <h2 style="margin-top:0">🎯 Start a New Test</h2>
+      <p class="tiny" style="margin-bottom:12px">40 questions from all 12 topics · 60 minutes · fresh randomized selection every time.</p>
+      <button onclick="app.startComprehensive()">Start Comprehensive Test</button>
+      <button class="sec" onclick="app.go('topics')">Practise by Topic</button>
+      ${data.mistakes.length ? `<button class="sec" onclick="app.startMistakes()">Practise My Mistakes (${data.mistakes.length})</button>` : ''}
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0">Topic Overview</h2>
+      ${TOPICS.map(t => {
+        const st = data.topicStats[t.id] || { attempted: 0, correct: 0 };
+        const acc = st.attempted ? Math.round(100 * st.correct / st.attempted) : 0;
+        return `<div class="topic-row">
+          <div style="flex:1;min-width:180px"><strong>${t.name}</strong></div>
+          <div class="tiny">Attempted: ${st.attempted} · Accuracy: ${acc}%</div>
+          <div style="min-width:120px"><div class="progress" style="margin:0"><div class="pbar" style="width:${acc}%"></div></div></div>
+          <button class="sm sec" onclick="app.startTopic(${t.id})">Practice</button>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
+/* =========================================================
+   TOPICS PAGE
+   ========================================================= */
+function pageTopics() {
+  ensureTopicStats();
+  return `
+    <h1>Grammar Topics</h1>
+    <p class="sub">12 modules · practise individually, then review what you got wrong</p>
+    <div class="grid g2">
+      ${TOPICS.map(t => {
+        const count = QS.filter(q => q.t === t.id).length;
+        const st = data.topicStats[t.id] || { attempted: 0, correct: 0 };
+        const acc = st.attempted ? Math.round(100 * st.correct / st.attempted) : 0;
+        const done = st.attempted > 0;
+        return `<div class="card tc" onclick="app.startTopic(${t.id})">
+          <div class="row" style="justify-content:space-between;align-items:flex-start">
+            <h3 style="margin:0">${t.id}. ${t.name}</h3>
+            ${done ? '<span class="bdg bdg-B1">In progress</span>' : '<span class="bdg bdg-A2">New</span>'}
+          </div>
+          <p class="tiny" style="margin:8px 0">${t.ov}</p>
+          <div class="tiny">${count} questions · ${st.attempted} attempted · ${acc}% accuracy</div>
+          <div class="progress"><div class="pbar" style="width:${acc}%"></div></div>
+          <div class="row mt" style="justify-content:flex-start;gap:8px">
+            <button class="sm" onclick="event.stopPropagation();app.startTopic(${t.id})">Practice</button>
+            <button class="sm sec" onclick="event.stopPropagation();app.reviewMistakesForTopic(${t.id})">Review mistakes</button>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
+/* =========================================================
+   PRACTICE PAGE  (topic practice + comprehensive + mistakes)
+   ========================================================= */
+function pagePractice() {
+  if (!S) return '<div class="card"><p>No active session.</p><button onclick="app.home()">Return home</button></div>';
+
+  const q = S.questions[S.current];
+  if (!q) return '<div class="card"><p>Question not found.</p></div>';
+
+  const answers = S.answers;
+  const total = S.questions.length;
+  const answeredCount = answers.filter(a => a !== null).length;
+  const pct = Math.round(100 * answeredCount / total);
+
+  let title = '';
+  if (S.type === 'topic') {
+    const t = TOPICS.find(x => x.id === S.topicId);
+    title = 'Topic Practice — ' + (t ? t.name : '');
+  } else if (S.type === 'comprehensive') {
+    title = 'Comprehensive Grammar Test — 40 questions';
+  } else if (S.type === 'mistakes') {
+    title = 'Mistake Practice';
+  }
+
+  let timerHtml = '';
+  if (S.type === 'comprehensive') {
+    const remaining = Math.max(0, Math.floor((S.endsAt - Date.now()) / 1000));
+    const m = Math.floor(remaining / 60);
+    const sec = remaining % 60;
+    const warn = remaining < 300 ? ' warn' : '';
+    timerHtml = `<div class="timer${warn}" id="timer">⏱ ${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}</div>`;
+  }
+
+  return `
+    <div class="row">
+      <div>
+        <h1 style="margin-bottom:2px">${title}</h1>
+        <p class="sub" style="margin-bottom:0">Question ${S.current + 1} of ${total} · ${answeredCount} answered</p>
+      </div>
+      <div class="row" style="gap:8px">${timerHtml}</div>
+    </div>
+
+    <div class="progress"><div class="pbar" style="width:${pct}%"></div></div>
+
+    <div class="card">
+      <div class="tiny">Section: ${q.s} · <span class="bdg bdg-${q.d}">${q.d}</span></div>
+      <div class="qt">${q.q}</div>
+      ${q.o.map((opt, i) =>
+        `<button class="option ${answers[S.current] === i ? 'sel' : ''}" onclick="app.answer(${i})">
+          <strong>${'ABCD'[i]}.</strong> ${opt}
+        </button>`
+      ).join('')}
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <button class="sec" onclick="app.prevQ()" ${S.current === 0 ? 'disabled' : ''}>← Previous</button>
+        ${S.current < total - 1
+          ? '<button onclick="app.nextQ()">Next →</button>'
+          : '<button onclick="app.confirmSubmit()">Submit Test</button>'}
+      </div>
+      <div class="mt">
+        <div class="tiny" style="margin-bottom:6px">Jump to question:</div>
+        <div class="ng">
+          ${S.questions.map((_, i) =>
+            `<div class="nb ${answers[i] !== null ? 'ans' : ''} ${i === S.current ? 'cur' : ''}"
+                  onclick="app.jumpQ(${i})">${i + 1}</div>`
+          ).join('')}
+        </div>
+      </div>
+      ${S.type !== 'comprehensive' ? '<button class="sec" onclick="app.confirmSubmit()">Submit</button>' : ''}
+    </div>
+  `;
+}
+
+/* =========================================================
+   RESULTS PAGE
+   ========================================================= */
+function pageResults() {
+  if (!pageParams.result) return '<div class="card"><p>No result.</p></div>';
+  const r = pageParams.result;
+  return `
+    <h1>Results</h1>
+    <p class="sub">${r.title}</p>
+
+    <div class="card center" style="padding:32px 20px">
+      <div style="font-size:52px;font-weight:700;color:var(--pr);line-height:1">${r.score.toFixed(1)}<span style="font-size:22px;color:#7A8BA1">/10</span></div>
+      <div style="margin-top:8px;font-size:18px;font-weight:600">${r.level}</div>
+      <div class="tiny" style="margin-top:4px">${r.correct} of ${r.total} correct (${r.accuracy}%)</div>
+    </div>
+
+    <div class="grid g4">
+      <div class="stat"><div class="stat-v">${r.total}</div><div class="stat-l">Questions</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--su)">${r.correct}</div><div class="stat-l">Correct</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--er)">${r.incorrect}</div><div class="stat-l">Incorrect</div></div>
+      <div class="stat"><div class="stat-v" style="color:#999">${r.unanswered}</div><div class="stat-l">Unanswered</div></div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <div class="tiny">Time taken: ${r.timeTaken}</div>
+        <button onclick="app.reviewCurrent()">Review all answers</button>
+      </div>
+      <div class="row mt" style="gap:8px;flex-wrap:wrap">
+        <button class="sec" onclick="app.startMistakes()">Practise My Mistakes</button>
+        ${r.type === 'topic' ? `<button class="sec" onclick="app.startTopic(${r.topicId})">New randomized session</button>` : ''}
+        ${r.type === 'comprehensive' ? '<button class="sec" onclick="app.startComprehensive()">Start New Test</button>' : ''}
+        <button class="sec" onclick="app.home()">Back to dashboard</button>
+      </div>
+    </div>
+  `;
+}
+
+/* =========================================================
+   REVIEW PAGE
+   ========================================================= */
+let reviewFilter = 'all';
+function pageReview() {
+  if (!pageParams.session) return '<div class="card"><p>No session.</p></div>';
+  const rev = pageParams.session;
+  const qs = rev.questions;
+  const ans = rev.answers;
+
+  const filters = [
+    ['all', 'All'],
+    ['correct', 'Correct'],
+    ['incorrect', 'Incorrect'],
+    ['unanswered', 'Unanswered']
+  ];
+
+  let visible = qs.map((q, i) => ({ q, i, selected: ans[i] })).filter(item => {
+    if (reviewFilter === 'all') return true;
+    if (reviewFilter === 'correct') return item.selected === item.q.a;
+    if (reviewFilter === 'incorrect') return item.selected !== null && item.selected !== item.q.a;
+    if (reviewFilter === 'unanswered') return item.selected === null;
+    return true;
+  });
+
+  return `
+    <div class="row">
+      <h1 style="margin:0">Detailed Answer Review</h1>
+      <button class="sec" onclick="app.backToResults()">← Back to results</button>
+    </div>
+    <p class="sub">${qs.length} questions · filter and study each explanation</p>
+
+    <div class="card" style="padding:12px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${filters.map(([k, label]) => {
+          let count = 0;
+          if (k === 'all') count = qs.length;
+          else if (k === 'correct') count = qs.filter((q, i) => ans[i] === q.a).length;
+          else if (k === 'incorrect') count = qs.filter((q, i) => ans[i] !== null && ans[i] !== q.a).length;
+          else if (k === 'unanswered') count = qs.filter((q, i) => ans[i] === null).length;
+          return `<button class="fb ${reviewFilter === k ? 'act' : ''}" onclick="app.setFilter('${k}')">${label} (${count})</button>`;
+        }).join('')}
+      </div>
+    </div>
+
+    ${visible.map(item => {
+      const { q, i, selected } = item;
+      const correct = q.a;
+      const isCorrect = selected === correct;
+      const isUnanswered = selected === null;
+      let statusLabel = isUnanswered ? 'Unanswered' : (isCorrect ? 'Correct' : 'Incorrect');
+      let statusColor = isUnanswered ? '#999' : (isCorrect ? 'var(--su)' : 'var(--er)');
+
+      return `<div class="card">
+        <div class="row" style="align-items:flex-start">
+          <div class="tiny">Q${i + 1} · ${q.s} · <span class="bdg bdg-${q.d}">${q.d}</span></div>
+          <div style="color:${statusColor};font-weight:600;font-size:13px">${statusLabel}</div>
+        </div>
+        <div class="qt">${q.q}</div>
+        ${q.o.map((opt, j) => {
+          let cls = 'option';
+          if (j === correct) cls += ' cor';
+          else if (j === selected && !isCorrect) cls += ' wr';
+          return `<div class="${cls}" style="cursor:default">
+            <strong>${'ABCD'[j]}.</strong> ${opt}
+            ${j === correct ? ' ✓ correct answer' : ''}
+            ${j === selected && !isCorrect ? ' ✗ your answer' : ''}
+          </div>`;
+        }).join('')}
+        <div class="exp"><strong>Why:</strong> ${q.e}</div>
+      </div>`;
+    }).join('') || '<div class="card"><p>No questions match this filter.</p></div>'}
+  `;
+}
+
+/* =========================================================
+   STATISTICS PAGE
+   ========================================================= */
+function pageStats() {
+  ensureTopicStats();
+  return `
+    <h1>Learning Statistics</h1>
+    <p class="sub">Detailed progress across all 12 grammar topics</p>
+    <div class="card">
+      ${TOPICS.map(t => {
+        const st = data.topicStats[t.id] || { attempted: 0, correct: 0, incorrect: 0 };
+        const acc = st.attempted ? Math.round(100 * st.correct / st.attempted) : 0;
+        return `<div style="margin-bottom:16px">
+          <div class="row" style="justify-content:space-between">
+            <strong>${t.id}. ${t.name}</strong>
+            <span class="tiny">${st.attempted} attempted · ${st.correct} correct · ${acc}% accuracy</span>
+          </div>
+          <div class="progress"><div class="pbar" style="width:${acc}%"></div></div>
+        </div>`;
+      }).join('')}
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0">Test History</h2>
+      ${data.tests.length === 0 ? '<p class="tiny">No tests yet.</p>' :
+        data.tests.slice().reverse().slice(0, 10).map(t => `
+          <div class="topic-row">
+            <div>${t.date}</div>
+            <div class="tiny">${t.correct}/${t.total} correct · ${t.accuracy}%</div>
+            <strong style="color:var(--pr)">${t.score.toFixed(1)}/10</strong>
+          </div>
+        `).join('')
+      }
+    </div>
+  `;
+}
+
+/* =========================================================
+   SETTINGS PAGE
+   ========================================================= */
+function pageSettings() {
+  return `
+    <h1>Settings</h1>
+    <p class="sub">Manage your learning data</p>
+
+    <div class="card">
+      <h2 style="margin-top:0">Progress data</h2>
+      <p class="tiny">All progress is stored in your browser's localStorage.</p>
+      <div class="row mt" style="gap:8px;flex-wrap:wrap">
+        <button class="sec" onclick="app.exportData()">Export JSON</button>
+        <button class="sec" onclick="document.getElementById('fileIn').click()">Import JSON</button>
+        <input type="file" id="fileIn" accept="application/json" style="display:none" onchange="app.importData(this)">
+        <button class="sec" onclick="app.clearTests()">Clear test history</button>
+        <button class="dan" onclick="app.resetAll()">Reset all progress</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0">Statistics summary</h2>
+      <div class="tiny">
+        Practice sessions: <strong>${data.sessions.length}</strong><br>
+        Tests completed: <strong>${data.tests.length}</strong><br>
+        Mistakes tracked: <strong>${data.mistakes.length}</strong><br>
+        Questions in bank: <strong>${QS.length}</strong>
+      </div>
+    </div>
+  `;
+}
+
+/* =========================================================
+   APP ACTIONS (bound to window.app)
+   ========================================================= */
+const app = {
+  go: function (page) { navigate(page); },
+  home: function () { S = null; navigate('dashboard'); },
+
+  startTopic: function (topicId) {
+    const qs = QS.filter(q => q.t === topicId);
+    if (!qs.length) return alert('No questions for this topic.');
+    const prepared = prepare(qs);
+    validatePrepared(prepared);
+    S = {
+      type: 'topic',
+      topicId: topicId,
+      questions: prepared,
+      answers: new Array(prepared.length).fill(null),
+      current: 0,
+      startTime: Date.now(),
+      title: TOPICS.find(t => t.id === topicId).name
+    };
+    navigate('practice');
+  },
+
+  startComprehensive: function () {
+    const prepared = buildComprehensive();
+    if (!prepared.length) return;              // build failed (not enough questions)
+    S = {
+      type: 'comprehensive',
+      topicId: null,
+      questions: prepared,
+      answers: new Array(prepared.length).fill(null),
+      current: 0,
+      startTime: Date.now(),
+      endsAt: Date.now() + 60 * 60 * 1000,
+      title: 'Comprehensive Test'
+    };
+    navigate('practice');
+    startTimer();
+  },
+
+  startMistakes: function () {
+    if (!data.mistakes.length) return alert('No mistakes tracked yet — complete a practice session first.');
+    const ids = new Set(data.mistakes.map(id => String(id)));
+    const qs = QS.filter(q => ids.has(String(q.id)));
+    if (!qs.length) return alert('No matching questions found for tracked mistakes.');
+    const prepared = prepare(qs);
+    validatePrepared(prepared);
+    S = {
+      type: 'mistakes',
+      topicId: null,
+      questions: prepared,
+      answers: new Array(prepared.length).fill(null),
+      current: 0,
+      startTime: Date.now(),
+      title: 'Mistake Practice'
+    };
+    navigate('practice');
+  },
+
+  answer: function (i) {
+    if (!S) return;
+    S.answers[S.current] = i;
+    render();
+  },
+
+  nextQ: function () {
+    if (!S) return;
+    if (S.current < S.questions.length - 1) S.current++;
+    render();
+  },
+
+  prevQ: function () {
+    if (!S) return;
+    if (S.current > 0) S.current--;
+    render();
+  },
+
+  jumpQ: function (i) {
+    if (!S) return;
+    S.current = i;
+    render();
+  },
+
+  confirmSubmit: function () {
+    if (!S) return;
+    if (confirm('Submit your answers? You will not be able to change them afterwards.')) {
+      app.submit();
+    }
+  },
+
+  submit: function () {
+    if (!S) return;
+    if (timerId) { clearInterval(timerId); timerId = null; }
+
+    let correct = 0, incorrect = 0, unanswered = 0;
+    S.questions.forEach((q, i) => {
+      const a = S.answers[i];
+      if (a === null) unanswered++;
+      else if (a === q.a) correct++;
+      else incorrect++;
+    });
+    const total = S.questions.length;
+    const score = total ? (correct / total) * 10 : 0;
+    const accuracy = total ? Math.round(100 * correct / total) : 0;
+    const level = score >= 9 ? 'Excellent'
+      : score >= 8 ? 'Very Good'
+      : score >= 6.5 ? 'Good'
+      : score >= 5 ? 'Satisfactory'
+      : 'Needs Improvement';
+
+    const timeTaken = Math.max(1, Math.floor((Date.now() - S.startTime) / 1000));
+    const mm = Math.floor(timeTaken / 60), ss = timeTaken % 60;
+    const timeStr = mm + 'm ' + ss + 's';
+
+    /* Update topic stats + mistakes */
+    ensureTopicStats();
+    S.questions.forEach((q, i) => {
+      const st = data.topicStats[q.t];
+      st.attempted = (st.attempted || 0) + 1;
+      if (S.answers[i] === q.a) st.correct = (st.correct || 0) + 1;
+      else st.incorrect = (st.incorrect || 0) + 1;
+    });
+    S.questions.forEach((q, i) => {
+      if (S.answers[i] !== q.a) {
+        if (!data.mistakes.includes(q.id)) data.mistakes.push(q.id);
+      } else {
+        data.mistakes = data.mistakes.filter(id => id !== q.id);
+      }
+    });
+
+    const resultObj = {
+      type: S.type,
+      topicId: S.topicId,
+      title: S.title,
+      total, correct, incorrect, unanswered,
+      score, accuracy, level, timeTaken: timeStr
+    };
+
+    if (S.type === 'comprehensive') {
+      data.tests.push({
+        date: new Date().toLocaleDateString(),
+        total, correct, score, accuracy
+      });
+      data.lastTestIds = S.questions.map(q => q.id);
+    } else {
+      data.sessions.push({
+        date: new Date().toLocaleDateString(),
+        type: S.type,
+        topicId: S.topicId,
+        total, correct, score
+      });
+    }
+    save();
+
+    /* Snapshot session BEFORE navigating so Review always has it */
+    const savedSession = {
+      questions: S.questions,
+      answers: S.answers.slice()
+    };
+    S = null;
+    window.__lastSession = savedSession;
+    window.__lastResult = resultObj;
+    navigate('results', { result: resultObj, savedSession });
+  },
+
+  reviewCurrent: function () {
+    if (!window.__lastSession) return;
+    reviewFilter = 'all';                       // reset filter for each new review
+    navigate('review', { session: window.__lastSession });
+  },
+
+  backToResults: function () {
+    if (window.__lastResult) navigate('results', { result: window.__lastResult });
+    else navigate('dashboard');
+  },
+
+  setFilter: function (f) {
+    reviewFilter = f;
+    render();
+  },
+
+  reviewMistakesForTopic: function (topicId) {
+    const ids = new Set(data.mistakes.map(id => String(id)));
+    const qs = QS.filter(q => q.t === topicId && ids.has(String(q.id)));
+    if (!qs.length) return alert('No tracked mistakes for this topic yet.');
+    const prepared = prepare(qs);
+    validatePrepared(prepared);
+    S = {
+      type: 'mistakes',
+      topicId: topicId,
+      questions: prepared,
+      answers: new Array(prepared.length).fill(null),
+      current: 0,
+      startTime: Date.now(),
+      title: 'Mistake Practice — ' + TOPICS.find(t => t.id === topicId).name
+    };
+    navigate('practice');
+  },
+
+  exportData: function () {
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'na021-progress-' + new Date().toISOString().slice(0, 10) + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  },
+
+  importData: function (input) {
+    const file = input.files && input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const parsed = JSON.parse(e.target.result);
+        if (!confirm('Import will replace your current progress. Continue?')) return;
+        data = Object.assign({}, DEF, parsed);
+        save();
+        alert('Imported successfully.');
+        render();
+      } catch (err) {
+        alert('Invalid JSON file.');
+      }
+    };
+    reader.readAsText(file);
+  },
+
+  clearTests: function () {
+    if (!confirm('Delete all test history? This cannot be undone.')) return;
+    data.tests = [];
+    save();
+    render();
+  },
+
+  resetAll: function () {
+    if (!confirm('Reset ALL learning progress? This cannot be undone.')) return;
+    if (!confirm('Are you absolutely sure?')) return;
+    data = Object.assign({}, DEF);
+    save();
+    S = null;
+    render();
+  }
+};
+
+/* =========================================================
+   COMPREHENSIVE TEST BUILDER (balanced, unique, avoids last attempt)
+   ========================================================= */
+function buildComprehensive() {
+  const TOTAL = 40;
+  if (QS.length < TOTAL) {
+    alert('Not enough questions in the bank (' + QS.length + ') to build a ' + TOTAL + '-question test.');
+    return [];
+  }
+  const lastIds = new Set((data.lastTestIds || []).map(id => String(id)));
+  const picked = [];
+  const usedIds = new Set();
+
+  /* Pass 1: 3 per topic = 36 */
+  shuffle(TOPICS.map(t => t.id)).forEach(tid => {
+    let pool = QS.filter(q => q.t === tid && !usedIds.has(String(q.id)));
+    /* Prefer non-last-test questions when there's enough variety */
+    const notLast = pool.filter(q => !lastIds.has(String(q.id)));
+    if (notLast.length >= 3) pool = notLast;
+    shuffle(pool).slice(0, 3).forEach(q => {
+      picked.push(q);
+      usedIds.add(String(q.id));
+    });
+  });
+
+  /* Pass 2: top up to 40 from any topic */
+  if (picked.length < TOTAL) {
+    let pool = QS.filter(q => !usedIds.has(String(q.id)));
+    const notLast = pool.filter(q => !lastIds.has(String(q.id)));
+    if (notLast.length >= TOTAL - picked.length) pool = notLast;
+    shuffle(pool).slice(0, TOTAL - picked.length).forEach(q => {
+      picked.push(q);
+      usedIds.add(String(q.id));
+    });
+  }
+
+  const prepared = prepare(picked);   // shuffle question order + option order
+  validatePrepared(prepared);
+  return prepared;
+}
+
+/* =========================================================
+   TIMER (comprehensive test)
+   ========================================================= */
+function startTimer() {
+  if (timerId) clearInterval(timerId);
+  timerId = setInterval(function () {
+    if (!S || S.type !== 'comprehensive') {
+      clearInterval(timerId);
+      timerId = null;
+      return;
+    }
+    const remaining = Math.floor((S.endsAt - Date.now()) / 1000);
+    const el = document.getElementById('timer');
+    if (el && remaining >= 0) {
+      const m = Math.floor(remaining / 60);
+      const sec = remaining % 60;
+      el.textContent = '⏱ ' + String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
+      if (remaining < 300) el.classList.add('warn');
+    }
+    if (remaining <= 0) {
+      clearInterval(timerId);
+      timerId = null;
+      alert('Time is up. Your test will be submitted automatically.');
+      app.submit();
+    }
+  }, 1000);
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+ensureTopicStats();
+render();
+</script>
+</body>
+</html>
